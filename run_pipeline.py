@@ -60,10 +60,10 @@ else:
     model = joblib.load(MODEL_FILE)
     pipeline = joblib.load(PIPELINE_FILE)
 
-    input_data = pd.read_csv("input.csv")
+    input_data = pd.read_csv("test_data.csv")
     transformed_input = pipeline.transform(input_data)
     predictions = model.predict(transformed_input)
     input_data["median_house_value"] = predictions
 
-    input_data.to_csv("output.csv", index=False)
+    input_data.to_csv("predictions.csv", index=False)
     print("Inference complete. Results saved to output.csv")
